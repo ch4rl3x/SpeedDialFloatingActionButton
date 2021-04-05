@@ -7,7 +7,7 @@ Usable docked in BottomAppBar
 <a href="https://github.com/ch4rl3x/SpeedDialFloatingActionButton/actions?query=workflow%3AKtlint"><img src="https://github.com/ch4rl3x/SpeedDialFloatingActionButton/workflows/Ktlint/badge.svg" alt="Ktlint"></a>
 
 <a href="https://www.codefactor.io/repository/github/ch4rl3x/SpeedDialFloatingActionButton"><img src="https://www.codefactor.io/repository/github/ch4rl3x/SpeedDialFloatingActionButton/badge" alt="CodeFactor" /></a>
-[![](https://jitpack.io/v/Ch4rl3x/Settings.svg)](https://jitpack.io/#Ch4rl3x/Settings)
+[![](https://jitpack.io/v/ch4rl3x/SpeedDialFloatingActionButton.svg)](https://jitpack.io/#ch4rl3x/SpeedDialFloatingActionButton)
 
 ## Dependency
 
