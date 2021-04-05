@@ -6,9 +6,8 @@ on:
     paths-ignore:
       - 'README.md'
     branches:
+      - develop
       - main
-    tags:
-      - '*'
 
 jobs:
   ktlint:
