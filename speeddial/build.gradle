@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
 }
 
+apply from: '../_ktlint.gradle'
 apply from: '../buildCompose.gradle'
 
 android {
