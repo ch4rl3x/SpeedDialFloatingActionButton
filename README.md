@@ -7,7 +7,7 @@ Usable docked in BottomAppBar
 <a href="https://github.com/ch4rl3x/SpeedDialFloatingActionButton/actions?query=workflow%3AKtlint"><img src="https://github.com/ch4rl3x/SpeedDialFloatingActionButton/workflows/Ktlint/badge.svg" alt="Ktlint"></a>
 
 <a href="https://www.codefactor.io/repository/github/ch4rl3x/SpeedDialFloatingActionButton"><img src="https://www.codefactor.io/repository/github/ch4rl3x/SpeedDialFloatingActionButton/badge" alt="CodeFactor" /></a>
-<a href="https://www.codefactor.io/repository/github/ch4rl3x/SpeedDialFloatingActionButton"><img src="https://img.shields.io/maven-central/v/de.charlex.compose/speeddial" alt="Maven Central" /></a>
+<a href="https://repo1.maven.org/maven2/de/charlex/compose/speeddial/"><img src="https://img.shields.io/maven-central/v/de.charlex.compose/speeddial" alt="Maven Central" /></a>
 
 
 
