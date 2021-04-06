@@ -52,7 +52,7 @@ fun SpeedDialFloatingActionButton(
     modifier: Modifier = Modifier,
     initialExpanded: Boolean = false,
     onClick: (SpeedDialData?) -> Unit,
-    animationDuration: Int = 1000,
+    animationDuration: Int = 300,
     animationDelayPerSelection: Int = 100,
     speedDialData: List<SpeedDialData>,
     showLabels: Boolean = false,
@@ -63,8 +63,7 @@ fun SpeedDialFloatingActionButton(
 ) {
     var expanded by remember { mutableStateOf(initialExpanded) }
 
-    val transition =
-        updateTransition(label = "multiSelectionExpanded", targetState = expanded)
+    val transition = updateTransition(label = "multiSelectionExpanded", targetState = expanded)
 
     val speedDialAlpha = mutableListOf<State<Float>>()
     val speedDialScale = mutableListOf<State<Float>>()
