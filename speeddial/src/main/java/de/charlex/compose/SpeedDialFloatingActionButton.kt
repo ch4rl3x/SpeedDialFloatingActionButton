@@ -1,5 +1,6 @@
 package de.charlex.compose
 
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.animateFloat
@@ -185,11 +186,19 @@ fun SpeedDialFloatingActionButton(
                             backgroundColor = speedDialBackgroundColor,
                             contentColor = speedDialContentColor
                         ) {
-                            Image(
-                                painter = it.painter,
-                                colorFilter = ColorFilter.tint(speedDialContentColor),
-                                contentDescription = null
-                            )
+                            if (it.painter != null) {
+                                Image(
+                                    painter = it.painter,
+                                    colorFilter = ColorFilter.tint(speedDialContentColor),
+                                    contentDescription = null
+                                )
+                            } else if (it.painterResource != null) {
+                                Image(
+                                    painter = painterResource(id = it.painterResource),
+                                    colorFilter = ColorFilter.tint(speedDialContentColor),
+                                    contentDescription = null
+                                )
+                            }
                         }
                     }
                 }
@@ -259,7 +268,7 @@ fun SpeedDialPreview() {
                     ),
                     SpeedDialData(
                         name = "Test 4",
-                        painter = painterResource(id = R.drawable.ic_add_white_24dp)
+                        painterResource = R.drawable.ic_add_white_24dp
                     )
                 )
             )
@@ -270,5 +279,7 @@ fun SpeedDialPreview() {
 data class SpeedDialData(
     val name: String,
     val label: String = name,
-    val painter: Painter
+    val painter: Painter? = null,
+    @DrawableRes
+    val painterResource: Int? = null
 )
