@@ -49,6 +49,7 @@ nexusStaging {
     stagingProfileId = sonatypeStagingProfileId
     username = ossrhUsername
     password = ossrhPassword
+    serverUrl = "https://s01.oss.sonatype.org/service/local/"
 }
 
 publishing {
