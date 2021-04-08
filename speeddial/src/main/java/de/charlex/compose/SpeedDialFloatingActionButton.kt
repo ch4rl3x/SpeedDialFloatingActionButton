@@ -167,7 +167,6 @@ fun SpeedDialFloatingActionButton(
                                 fontWeight = FontWeight.Medium
                             )
                         }
-
                         Spacer(modifier = Modifier.requiredWidth(10.dp))
                     }
 
