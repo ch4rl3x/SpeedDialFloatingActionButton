@@ -1,21 +1,14 @@
 package de.charlex.compose
 
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.core.updateTransition
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.foundation.layout.requiredWidth
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.FloatingActionButtonDefaults
 import androidx.compose.material.Icon
@@ -34,16 +27,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.util.fastForEachIndexed
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -91,7 +84,7 @@ fun SpeedDialFloatingActionButton(
                 )
             }
         ) {
-            if (it) 1f else 0.25f
+            if (it) 1f else 0f
         })
     }
 
@@ -142,26 +135,33 @@ fun SpeedDialFloatingActionButton(
                 )
             }
 
-            speedDialData.fastForEach {
+            speedDialData.fastForEachIndexed { index, data ->
+
+                val correctIndex =
+                    if (expanded) index else speedDialData.size - 1 - index
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     val interactionSource = remember { MutableInteractionSource() }
                     if (showLabels) {
+
                         Surface(
                             modifier = Modifier.clickable(
-                                interactionSource = interactionSource,
-                                indication = rememberRipple()
-                            ) {
-                                onClick(it)
-                            },
+                                    interactionSource = interactionSource,
+                                    indication = rememberRipple()
+                                ) {
+                                    onClick(data)
+                                }
+                                .alpha(speedDialAlpha[correctIndex].value)
+                                .scale(speedDialScale[correctIndex].value),
                             shape = MaterialTheme.shapes.small,
                             color = speedDialBackgroundColor,
                             contentColor = speedDialContentColor
                         ) {
                             Text(
                                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
-                                text = it.label,
+                                text = data.label,
                                 color = speedDialContentColor,
                                 maxLines = 1,
                                 fontWeight = FontWeight.Medium
@@ -174,21 +174,31 @@ fun SpeedDialFloatingActionButton(
                         modifier = Modifier
                             .requiredSize(56.dp)
                             .padding(8.dp)
+                            .alpha(speedDialAlpha[correctIndex].value)
+                            .scale(speedDialScale[correctIndex].value)
                     ) {
                         FloatingActionButton(
                             elevation = FloatingActionButtonDefaults.elevation(0.dp, 0.dp),
                             interactionSource = interactionSource,
                             onClick = {
-                                onClick(it)
+                                onClick(data)
                             },
                             backgroundColor = speedDialBackgroundColor,
                             contentColor = speedDialContentColor
                         ) {
-                            Image(
-                                painter = it.painter,
-                                colorFilter = ColorFilter.tint(speedDialContentColor),
-                                contentDescription = null
-                            )
+                            if (data.painter != null) {
+                                Icon(
+                                    painter = data.painter,
+                                    tint = speedDialContentColor,
+                                    contentDescription = null
+                                )
+                            } else if (data.painterResource != null) {
+                                Icon(
+                                    painter = painterResource(id = data.painterResource),
+                                    tint = speedDialContentColor,
+                                    contentDescription = null
+                                )
+                            }
                         }
                     }
                 }
@@ -205,23 +215,19 @@ fun SpeedDialFloatingActionButton(
             it.measure(constraints)
         }
 
-        layout(fabPlacable.width, fabPlacable.height) {
+        layout(
+            width = fabPlacable.width,
+            height = fabPlacable.height
+        ) {
             fabPlacable.placeRelative(0, 0)
 
             subFabPlacables.forEachIndexed { index, placeable ->
 
                 if (transition.isRunning or transition.currentState) {
-                    val correctIndex =
-                        if (expanded) index else subFabPlacables.size - 1 - index
-
-                    placeable.placeRelativeWithLayer(
+                    placeable.placeRelative(
                         x = fabPlacable.width - placeable.width,
                         y = -index * placeable.height - (fabPlacable.height * 1.25f).toInt()
-                    ) {
-                        alpha = speedDialAlpha[correctIndex].value
-                        scaleX = speedDialScale[correctIndex].value
-                        scaleY = speedDialScale[correctIndex].value
-                    }
+                    )
                 }
             }
         }
@@ -240,7 +246,7 @@ fun SpeedDialPreview() {
         ) {
             SpeedDialFloatingActionButton(
                 modifier = Modifier.padding(20.dp),
-                showLabels = false,
+                showLabels = true,
                 onClick = {
                 },
                 speedDialData = listOf(
@@ -258,7 +264,7 @@ fun SpeedDialPreview() {
                     ),
                     SpeedDialData(
                         name = "Test 4",
-                        painter = painterResource(id = R.drawable.ic_add_white_24dp)
+                        painterResource = R.drawable.ic_add_white_24dp
                     )
                 )
             )
@@ -269,5 +275,7 @@ fun SpeedDialPreview() {
 data class SpeedDialData(
     val name: String,
     val label: String = name,
-    val painter: Painter
+    val painter: Painter? = null,
+    @DrawableRes
+    val painterResource: Int? = null
 )
