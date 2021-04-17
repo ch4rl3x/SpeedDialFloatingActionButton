@@ -2,7 +2,7 @@
 buildscript {
 
     ext {
-        kotlin_version = "1.4.31"
+        kotlin_version = "1.4.32"
     }
 
     repositories {
@@ -10,7 +10,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.0-alpha13"
+        classpath 'com.android.tools.build:gradle:7.0.0-alpha14'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.30.0'
 

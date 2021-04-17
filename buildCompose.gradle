@@ -1,6 +1,6 @@
 
-def compose_version = '1.0.0-beta03'
-def nav_compose_version = "1.0.0-alpha09"
+def compose_version = '1.0.0-beta04'
+def nav_compose_version = "1.0.0-alpha10"
 
 android {
     kotlinOptions {
