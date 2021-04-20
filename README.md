@@ -19,6 +19,11 @@ dependencies {
 }
 ```
 
+## Demonstration
+
+![SpeedDialFloatingActionButton demonstration](https://github.com/ch4rl3x/SpeedDialFloatingActionButton/blob/main/art/demonstration.gif)
+
+
 That's it!
 
 License
