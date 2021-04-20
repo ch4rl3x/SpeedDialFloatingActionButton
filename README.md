@@ -11,17 +11,66 @@ Usable docked in BottomAppBar
 
 
 
-## Dependency
+# Add to your project
 
-```gradle
+Add actual SpeedDialFloatingActionButton library:
+
+```groovy
 dependencies {
-    implementation 'de.charlex.compose:speeddial:latest.release.here'
+    implementation 'de.charlex.compose:speeddial:1.0.0-beta01'
 }
 ```
 
-## Demonstration
+# How does it work?
 
-![SpeedDialFloatingActionButton demonstration](https://github.com/ch4rl3x/SpeedDialFloatingActionButton/blob/main/art/demonstration.gif)
+Use it instead of a normal FloatingActionButton
+
+```kotlin
+SpeedDialFloatingActionButton(
+    modifier = Modifier,
+    initialExpanded = false,
+    onClick = { speedDialData: SpeedDialData? ->
+        //TODO
+    },
+    animationDuration = 300,
+    animationDelayPerSelection = 100,
+    showLabels = true,
+    fabBackgroundColor: Color = MaterialTheme.colors.secondary,
+    fabContentColor: Color = contentColorFor(fabBackgroundColor),
+    speedDialBackgroundColor: Color = MaterialTheme.colors.secondaryVariant,
+    speedDialContentColor: Color = contentColorFor(speedDialBackgroundColor),
+    speedDialData = listOf(
+        SpeedDialData(
+            name = "test1",
+            label = "Test 1"
+            painter = painterResource(id = R.drawable.ic_add_white_24dp)
+        ),
+        SpeedDialData(
+            name = "Test 2",
+            painter = painterResource(id = R.drawable.ic_add_white_24dp)
+        ),
+        SpeedDialData(
+            name = "Test 3",
+            painterResource = R.drawable.ic_add_white_24dp
+        ),
+        SpeedDialData(
+            name = "Test 4",
+            painterResource = R.drawable.ic_add_white_24dp
+        )
+    )
+)
+```
+
+
+# Demonstration
+
+### Standalone
+![SpeedDialFloatingActionButton demonstration](https://github.com/ch4rl3x/SpeedDialFloatingActionButton/blob/main/art/expand.gif)
+
+### Docked in BottomAppBar with labels
+![SpeedDialFloatingActionButton demonstration](https://github.com/ch4rl3x/SpeedDialFloatingActionButton/blob/main/art/expand_labeled_docked.gif)
+
+
 
 
 That's it!
