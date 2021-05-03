@@ -77,7 +77,7 @@ publishing {
                 licenses {
                     license {
                         name = 'Apache-2.0 License'
-                        url = 'https://github.com/ch4rl3x/settings/blob/main/LICENSE'
+                        url = 'https://github.com/ch4rl3x/SpeedDialFloatingActionButton/blob/main/LICENSE'
                     }
                 }
                 developers {
