@@ -62,7 +62,7 @@ SpeedDialFloatingActionButton(
 ```
 
 
-# Demonstration
+# Examples
 
 ### Standalone
 ![SpeedDialFloatingActionButton demonstration](https://github.com/ch4rl3x/SpeedDialFloatingActionButton/blob/main/art/expand.gif)
