@@ -28,7 +28,7 @@ jobs:
 
         # Builds the release artifacts of the library
       - name: Release build
-        run: ./gradlew :speeddial:assembleRelease
+        run: ./gradlew assembleRelease
 
         # Generates other artifacts
       - name: Source jar and dokka
