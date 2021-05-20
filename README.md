@@ -17,7 +17,7 @@ Add actual SpeedDialFloatingActionButton library:
 
 ```groovy
 dependencies {
-    implementation 'de.charlex.compose:speeddial:1.0.0-beta01'
+    implementation 'de.charlex.compose:speeddial:1.0.0-beta02'
 }
 ```
 
