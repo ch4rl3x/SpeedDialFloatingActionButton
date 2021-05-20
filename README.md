@@ -1,4 +1,5 @@
 # SpeedDialFloatingActionButton
+## Current Compose Version: 1.0.0-beta07
 Compose MultiSelection / SpeedDial - FloatingActionButton
 
 Usable docked in BottomAppBar
