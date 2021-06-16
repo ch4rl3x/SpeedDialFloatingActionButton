@@ -1,5 +1,5 @@
 # SpeedDialFloatingActionButton
-## Current Compose Version: 1.0.0-beta07
+## Current Compose Version: 1.0.0-beta09
 Compose MultiSelection / SpeedDial - FloatingActionButton
 
 Usable docked in BottomAppBar
@@ -18,7 +18,7 @@ Add actual SpeedDialFloatingActionButton library:
 
 ```groovy
 dependencies {
-    implementation 'de.charlex.compose:speeddial:1.0.0-beta02'
+    implementation 'de.charlex.compose:speeddial:1.0.0-beta03'
 }
 ```
 
