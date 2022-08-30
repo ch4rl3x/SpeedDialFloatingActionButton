@@ -23,7 +23,7 @@ Add actual SpeedDialFloatingActionButton for Material 3 BottomAppBar library:
 
 ```groovy
 dependencies {
-    implementation 'de.charlex.compose:speeddial-bottomappbar-material3:1.0.0'
+    implementation 'de.charlex.compose:speeddial-bottomappbar-material3:1.1.0'
 }
 ```
 

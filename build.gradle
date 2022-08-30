@@ -24,6 +24,13 @@ buildscript {
 
 apply plugin: 'io.codearte.nexus-staging'
 
+subprojects {
+    ext {
+        PUBLISH_GROUP_ID = 'de.charlex.compose'
+        PUBLISH_VERSION = '1.1.0'
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
