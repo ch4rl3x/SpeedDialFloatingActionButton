@@ -27,7 +27,7 @@ import androidx.compose.ui.util.fastForEachIndexed
 
 @ExperimentalMaterialApi
 @Composable
-fun <T: SpeedDialData> SpeedDialFloatingActionButton(
+fun <T : SpeedDialData> SpeedDialFloatingActionButton(
     modifier: Modifier = Modifier,
     initialExpanded: Boolean = false,
     animationDuration: Int = 300,
@@ -178,7 +178,6 @@ fun <T: SpeedDialData> SpeedDialFloatingActionButton(
                                     tint = speedDialContentColor,
                                     contentDescription = null
                                 )
-
                             } else if (data.painterResource != null) {
                                 Icon(
                                     painter = painterResource(id = data.painterResource),
@@ -240,25 +239,21 @@ fun SpeedDialPreview() {
                         label = "Test 1",
                         painter = painterResource(id = R.drawable.ic_add_white_24dp)
                     ) {
-
                     },
                     SpeedDialData(
                         label = "Test 2",
                         painter = painterResource(id = R.drawable.ic_add_white_24dp)
                     ) {
-
                     },
                     SpeedDialData(
                         label = "Test 3",
                         painter = painterResource(id = R.drawable.ic_add_white_24dp)
                     ) {
-
                     },
                     SpeedDialData(
                         label = "Test 4",
                         painterResource = R.drawable.ic_add_white_24dp
                     ) {
-
                     }
                 )
             )

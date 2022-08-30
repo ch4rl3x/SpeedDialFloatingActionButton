@@ -16,7 +16,6 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 
-
 /**
  * Place this component in the material 3 BottomAppBar
  */
@@ -32,7 +31,7 @@ fun BottomAppBarSpeedDialFloatingActionButton(
     rotateIcon: Boolean = true,
     content: @Composable () -> Unit,
 ) {
-    val rotation = if(rotateIcon) {
+    val rotation = if (rotateIcon) {
         state.transition?.animateFloat(
             transitionSpec = {
                 if (targetState == SpeedDialState.EXPANDED) {

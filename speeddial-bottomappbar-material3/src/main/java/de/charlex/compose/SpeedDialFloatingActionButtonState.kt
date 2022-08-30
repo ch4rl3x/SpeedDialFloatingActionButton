@@ -21,8 +21,8 @@ class SpeedDialFloatingActionButtonState {
     var transition: Transition<SpeedDialState>? = null
 
     val stateChange: () -> Unit = {
-        currentState = if (transition?.currentState == SpeedDialState.EXPANDED
-            || transition?.isRunning == true && transition?.targetState == SpeedDialState.EXPANDED
+        currentState = if (transition?.currentState == SpeedDialState.EXPANDED ||
+            transition?.isRunning == true && transition?.targetState == SpeedDialState.EXPANDED
         ) {
             SpeedDialState.COLLAPSED
         } else {

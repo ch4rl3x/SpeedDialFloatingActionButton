@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun <T: FloatingActionButtonItem> SubSpeedDialFloatingActionButtons(
+fun <T : FloatingActionButtonItem> SubSpeedDialFloatingActionButtons(
     items: List<T>,
     showLabels: Boolean = true,
     state: SpeedDialFloatingActionButtonState,
@@ -35,7 +35,6 @@ fun <T: FloatingActionButtonItem> SubSpeedDialFloatingActionButtons(
                     .padding(start = 6.dp, end = 6.dp, top = 4.dp, bottom = 4.dp)
             )
         }
-
     },
     fabContent: @Composable (T) -> Unit = {
         SmallFloatingActionButton(
