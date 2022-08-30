@@ -7,3 +7,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SpeedDialFloatingActionButton"
 include ':speeddial'
+include ':speeddial-bottomappbar-material3'
+include ':example'

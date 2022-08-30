@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,13 +27,13 @@ import androidx.compose.ui.util.fastForEachIndexed
 
 @ExperimentalMaterialApi
 @Composable
-fun SpeedDialFloatingActionButton(
+fun <T: SpeedDialData> SpeedDialFloatingActionButton(
     modifier: Modifier = Modifier,
     initialExpanded: Boolean = false,
-    onClick: (SpeedDialData?) -> Unit,
     animationDuration: Int = 300,
     animationDelayPerSelection: Int = 100,
-    speedDialData: List<SpeedDialData>,
+    speedDialData: List<T>,
+    onClick: (T?) -> Unit = {},
     showLabels: Boolean = false,
     fabBackgroundColor: Color = MaterialTheme.colors.secondary,
     fabContentColor: Color = contentColorFor(fabBackgroundColor),
@@ -134,17 +133,17 @@ fun SpeedDialFloatingActionButton(
                     if (showLabels) {
 
                         Surface(
+                            onClick = {
+                                onClick(data)
+                                data.onClick()
+                            },
                             modifier = Modifier
                                 .alpha(speedDialAlpha[correctIndex].value)
                                 .scale(speedDialScale[correctIndex].value),
                             shape = MaterialTheme.shapes.small,
                             color = speedDialBackgroundColor,
                             contentColor = speedDialContentColor,
-                            onClick = {
-                                onClick(data)
-                            },
-                            interactionSource = interactionSource,
-                            indication = rememberRipple()
+                            interactionSource = interactionSource
                         ) {
                             Text(
                                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
@@ -179,6 +178,7 @@ fun SpeedDialFloatingActionButton(
                                     tint = speedDialContentColor,
                                     contentDescription = null
                                 )
+
                             } else if (data.painterResource != null) {
                                 Icon(
                                     painter = painterResource(id = data.painterResource),
@@ -235,35 +235,41 @@ fun SpeedDialPreview() {
             SpeedDialFloatingActionButton(
                 modifier = Modifier.padding(20.dp),
                 showLabels = true,
-                onClick = {
-                },
                 speedDialData = listOf(
                     SpeedDialData(
-                        name = "Test 1",
+                        label = "Test 1",
                         painter = painterResource(id = R.drawable.ic_add_white_24dp)
-                    ),
+                    ) {
+
+                    },
                     SpeedDialData(
-                        name = "Test 2",
+                        label = "Test 2",
                         painter = painterResource(id = R.drawable.ic_add_white_24dp)
-                    ),
+                    ) {
+
+                    },
                     SpeedDialData(
-                        name = "Test 3",
+                        label = "Test 3",
                         painter = painterResource(id = R.drawable.ic_add_white_24dp)
-                    ),
+                    ) {
+
+                    },
                     SpeedDialData(
-                        name = "Test 4",
+                        label = "Test 4",
                         painterResource = R.drawable.ic_add_white_24dp
-                    )
+                    ) {
+
+                    }
                 )
             )
         }
     }
 }
 
-data class SpeedDialData(
-    val name: String,
-    val label: String = name,
+open class SpeedDialData(
+    val label: String,
     val painter: Painter? = null,
     @DrawableRes
-    val painterResource: Int? = null
+    val painterResource: Int? = null,
+    val onClick: () -> Unit
 )
