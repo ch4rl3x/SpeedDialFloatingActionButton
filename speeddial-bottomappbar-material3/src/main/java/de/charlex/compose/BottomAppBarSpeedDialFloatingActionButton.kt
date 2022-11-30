@@ -45,7 +45,9 @@ fun BottomAppBarSpeedDialFloatingActionButton(
                 if (it == SpeedDialState.EXPANDED) 45f else 0f
             }
         )
-    } else null
+    } else {
+        null
+    }
 
     FloatingActionButton(
         modifier = modifier,

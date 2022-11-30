@@ -24,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEachIndexed
+import kotlinx.coroutines.flow.map
 
 @ExperimentalMaterialApi
 @Composable
@@ -49,7 +50,8 @@ fun <T : SpeedDialData> SpeedDialFloatingActionButton(
 
     speedDialData.fastForEachIndexed { index, _ ->
 
-        speedDialAlpha.add(transition.animateFloat(
+        speedDialAlpha.add(
+            transition.animateFloat(
             label = "multiSelectionAlpha",
             transitionSpec = {
                 tween(
@@ -59,9 +61,11 @@ fun <T : SpeedDialData> SpeedDialFloatingActionButton(
             }
         ) {
             if (it) 1f else 0f
-        })
+        }
+        )
 
-        speedDialScale.add(transition.animateFloat(
+        speedDialScale.add(
+            transition.animateFloat(
             label = "multiSelectionScale",
             transitionSpec = {
                 tween(
@@ -71,7 +75,8 @@ fun <T : SpeedDialData> SpeedDialFloatingActionButton(
             }
         ) {
             if (it) 1f else 0f
-        })
+        }
+        )
     }
 
     val fabIconRotation by transition.animateFloat(
@@ -131,7 +136,6 @@ fun <T : SpeedDialData> SpeedDialFloatingActionButton(
                 ) {
                     val interactionSource = remember { MutableInteractionSource() }
                     if (showLabels) {
-
                         Surface(
                             onClick = {
                                 onClick(data)
@@ -168,6 +172,7 @@ fun <T : SpeedDialData> SpeedDialFloatingActionButton(
                             interactionSource = interactionSource,
                             onClick = {
                                 onClick(data)
+                                data.onClick()
                             },
                             backgroundColor = speedDialBackgroundColor,
                             contentColor = speedDialContentColor
