@@ -27,7 +27,7 @@ apply plugin: 'io.codearte.nexus-staging'
 subprojects {
     ext {
         PUBLISH_GROUP_ID = 'de.charlex.compose'
-        PUBLISH_VERSION = '1.1.1'
+        PUBLISH_VERSION = '1.2.0'
     }
 }
 
