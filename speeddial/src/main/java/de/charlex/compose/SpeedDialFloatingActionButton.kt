@@ -24,7 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEachIndexed
-import kotlinx.coroutines.flow.map
+import de.charlex.compose.speeddial.R
 
 @ExperimentalMaterialApi
 @Composable
