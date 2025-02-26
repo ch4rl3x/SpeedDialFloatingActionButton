@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -40,6 +41,8 @@ fun <T : SpeedDialData> SpeedDialFloatingActionButton(
     fabContentColor: Color = contentColorFor(fabBackgroundColor),
     speedDialBackgroundColor: Color = MaterialTheme.colors.secondaryVariant,
     speedDialContentColor: Color = contentColorFor(speedDialBackgroundColor),
+    fabIcon: ImageVector = Icons.Default.Add,
+    fabIconRotationDegree: Float = 45f,
 ) {
     var expanded by remember { mutableStateOf(initialExpanded) }
 
@@ -85,7 +88,7 @@ fun <T : SpeedDialData> SpeedDialFloatingActionButton(
             tween(durationMillis = animationDuration)
         }
     ) {
-        if (it) 45f else 0f
+        if (it) fabIconRotationDegree else 0f
     }
     val fabBackgroundColorAnimated by transition.animateColor(
         label = "fabBackgroundColor",
@@ -121,7 +124,7 @@ fun <T : SpeedDialData> SpeedDialFloatingActionButton(
             ) {
                 Icon(
                     modifier = Modifier.rotate(fabIconRotation),
-                    imageVector = Icons.Default.Add,
+                    imageVector = fabIcon,
                     contentDescription = null,
                 )
             }
